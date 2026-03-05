@@ -1,31 +1,28 @@
-import yfinance as yf
+# 🏛️ Financial Intelligence Suite 2026 - Alpha Monitor
+# Session Date: March 5, 2026
 
-def run_alpha_sweep():
-    # Final Close Data: March 5, 2026
-    # Nasdaq Index: 22,748.99 (-0.26%)
-    # JPM: 93.40 (-2.00%)
-    # IBM: 59.16 (+3.64%)
-    # TSLA: 05.55 (+3.44%)
+def calculate_session_alpha():
+    # Final Close Data (Verified Mar 05, 2026)
+    nasdaq_close = 22748.99
+    nasdaq_pct = -0.26
     
-    ixic_delta = -0.26
     portfolio = {
-        "IBM":  {"price": 259.16, "delta": 3.64, "note": "Quantum (Nighthawk) Rally"},
-        "TSLA": {"price": 405.55, "delta": 3.44, "note": "Optimus Gen 3 Hype"},
-        "JPM":  {"price": 293.40, "delta": -2.00, "note": "Yield Pressure"}
+        "IBM":  {"price": 259.16, "change": 3.64,  "tag": "Quantum/Nighthawk"},
+        "TSLA": {"price": 405.55, "change": 3.44,  "tag": "Optimus/AI Event"},
+        "JPM":  {"price": 293.40, "change": -2.00, "tag": "Yield Sensitivity"}
     }
     
-    print(f"🏛️ INNOVATION ALPHA SWEEP | MARCH 05, 2026")
-    print("-" * 65)
+    print(f"📊 SESSION ANALYSIS: MARCH 05, 2026")
+    print(f"Benchmark (Nasdaq): {nasdaq_close} ({nasdaq_pct}%)")
+    print("-" * 60)
     print(f"{'Ticker':<6} | {'Price':<8} | {'Alpha vs IXIC':<15} | {'Catalyst'}")
-    print("-" * 65)
+    print("-" * 60)
     
-    for ticker, m in portfolio.items():
-        alpha = m['delta'] - ixic_delta
+    for ticker, data in portfolio.items():
+        # Alpha = Asset Change - Benchmark Change
+        alpha = data['change'] - nasdaq_pct
         status = "🟢" if alpha > 0 else "🔴"
-        print(f"{ticker:<6} | ${m['price']:>7.2f} | {status} {alpha:>+6.2f}% | {m['note']}")
-    
-    print("-" * 65)
-    print("ANALYSIS: Tech-to-Innovation rotation confirmed.")
+        print(f"{ticker:<6} | ${data['price']:>7.2f} | {status} {alpha:>+6.2f}% | {data['tag']}")
 
 if __name__ == "__main__":
-    run_alpha_sweep()
+    calculate_session_alpha()
