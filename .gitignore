@@ -1,0 +1,15 @@
+# Ignore Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore logs
+*.log
+
+# Ignore environment
+venv/
+.env
+
+# Allow all Python scripts
+!*.py
